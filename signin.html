@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Sign-In</title>
+    <link rel="stylesheet" href="signin.css">
+
+    <!-- Correct type for PNG -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/174/174857.png" type="image/png">
+</head>
+<body>
+    <div class="sign-in-container">
+        <div class="header">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo" class="logo">
+        </div>
+        <div class="form-container">
+            <h2>Sign in</h2>
+            <p>Stay updated on your professional world</p>
+            <form id="signInForm">
+                <div class="input-box">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email or Phone</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="sign-in-btn">Sign in</button>
+            </form>
+            <div class="divider">
+                <span>or</span>
+            </div>
+            <button class="join-now-btn">Join now</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission and redirect
+        document.getElementById("signInForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Push a new state to the browser history so the back button won't return to the sign-in page
+            window.location.href = "spotify.html"; // Redirect to spotify.html
+
+            // Replace the current history state
+            window.history.pushState(null, null, window.location.href);
+        });
+
+        // Disable back navigation
+        window.addEventListener('popstate', function(event) {
+            // When the user tries to go back, redirect them to the signed-in page
+            window.location.href = "spotify.html";
+        });
+    </script>
+</body>
+</html>
